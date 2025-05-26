@@ -1,0 +1,14 @@
+version: "3.8"
+
+services:
+  esphome:
+    container_name: esphome-armv7
+    image: davidedandrea/esphome:latest
+    network_mode: host  # necessario per mDNS, ping, OTA
+    volumes:
+      - ./config:/config
+    environment:
+      USERNAME: ""       # imposta se vuoi login web
+      PASSWORD: ""
+    restart: unless-stopped
+    command: dashboard /config
